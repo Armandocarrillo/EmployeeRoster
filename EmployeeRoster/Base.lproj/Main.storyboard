@@ -198,7 +198,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="tpg-Sa-NBw" kind="show" id="jQa-X8-RjP"/>
+                                            <segue destination="tpg-Sa-NBw" kind="show" identifier="SelectEmployeeType" id="jQa-X8-RjP"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>

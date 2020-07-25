@@ -1,7 +1,18 @@
 
 import UIKit
 
-class EmployeeDetailTableViewController: UITableViewController, UITextFieldDelegate {
+class EmployeeDetailTableViewController: UITableViewController, UITextFieldDelegate, SelectEmployeeTypeTableViewControllerDelegate {
+    
+    var employee: Employee?
+    
+    var employeeType : EmployeeType?
+    
+    func didSelect(employeeType: EmployeeType) {
+        self.employeeType = employeeType
+        updateEmployeeType()
+        
+    }
+    
 
     struct PropertyKeys {
         static let unwindToListIndentifier = "UnwindToListSegue"
@@ -23,12 +34,13 @@ class EmployeeDetailTableViewController: UITableViewController, UITextFieldDeleg
     let employeeBirthdayPickerCellIndexPath = 2
     let employeeBirthdayCellIndexPath = 1
     
-    var employee: Employee?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateDateView()
         updateView()
+        updateEmployeeType()
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == employeeBirthdayPickerCellIndexPath{
@@ -56,7 +68,15 @@ class EmployeeDetailTableViewController: UITableViewController, UITextFieldDeleg
         }
     }
     
-   
+    func updateEmployeeType(){
+        if let employeeType = employeeType{
+            employeeTypeLabel.text = employeeType.description()
+            employeeTypeLabel.textColor = .black
+            
+        } else {
+            employeeTypeLabel.text = " Non set "
+        }
+    }
     
     
     func updateDateView(){
@@ -91,10 +111,17 @@ class EmployeeDetailTableViewController: UITableViewController, UITextFieldDeleg
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         if let name = nameTextField.text {
-            employee = Employee(name: name, dateOfBirth: employeeBirthdayPicker.date, employeeType: .exempt)
+            if let employeeTypeConfirmed = employeeType{
+            employee = Employee(name: name, dateOfBirth: employeeBirthdayPicker.date, employeeType: employeeTypeConfirmed)
             performSegue(withIdentifier: PropertyKeys.unwindToListIndentifier, sender: self)
-       
-        }
+            
+            }else {
+                print("Add a new employee")
+               
+                
+            }
+        
+    }
     }
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -110,5 +137,6 @@ class EmployeeDetailTableViewController: UITableViewController, UITextFieldDeleg
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         return false
     }
+    
 
 }
