@@ -78,7 +78,7 @@ class EmployeeDetailTableViewController: UITableViewController, UITextFieldDeleg
             nameTextField.text = employee.name
             let dateFormatter = DateFormatter()
             dateFormatter.dateStyle = .medium
-            dobLabel.text = dateFormatter.string(from: employee.dateOfBirth)
+            dobLabel.text = dateFormatter.string(from: employeeBirthdayPicker.date)
             dobLabel.textColor = .black
             employeeTypeLabel.text = employee.employeeType.description()
             employeeTypeLabel.textColor = .black

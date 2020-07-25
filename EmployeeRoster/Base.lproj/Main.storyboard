@@ -146,6 +146,12 @@
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="Ez8-hJ-K9F">
                                                     <rect key="frame" x="47" y="0.0" width="320" height="216"/>
+                                                    <date key="minimumDate" timeIntervalSinceReferenceDate="-61567734204">
+                                                        <!--0050-01-01 11:36:36 +0000-->
+                                                    </date>
+                                                    <date key="maximumDate" timeIntervalSinceReferenceDate="631105200">
+                                                        <!--2020-12-31 11:00:00 +0000-->
+                                                    </date>
                                                     <connections>
                                                         <action selector="birthdayPickerValueChanged:" destination="sKr-bE-vCi" eventType="valueChanged" id="Xey-m1-aTx"/>
                                                     </connections>
@@ -191,6 +197,9 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="qTr-iw-gRD" secondAttribute="bottom" id="rdn-gl-jUk"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="tpg-Sa-NBw" kind="show" id="jQa-X8-RjP"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -224,6 +233,44 @@
                 <exit id="vE1-1q-P3J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2242" y="169"/>
+        </scene>
+        <!--Employee Type Table View Controller-->
+        <scene sceneID="Njk-eb-MAh">
+            <objects>
+                <tableViewController id="tpg-Sa-NBw" customClass="EmployeeTypeTableViewController" customModule="EmployeeRoster" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mqu-Vz-X3E">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="employeeTypeSegue" textLabel="pTz-Oo-3yG" style="IBUITableViewCellStyleDefault" id="ZZZ-n9-6Je">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZZZ-n9-6Je" id="GVt-sq-EyK">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pTz-Oo-3yG">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tpg-Sa-NBw" id="ffr-oJ-w5D"/>
+                            <outlet property="delegate" destination="tpg-Sa-NBw" id="W9m-ZJ-Y66"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="rA6-cD-cJp"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="odf-CK-dEh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3028" y="173"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="waa-u7-kAT">
@@ -263,6 +310,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HfC-1c-cmZ"/>
+        <segue reference="fI6-Dc-E20"/>
     </inferredMetricsTieBreakers>
 </document>
